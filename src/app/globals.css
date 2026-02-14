@@ -1,26 +1,475 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&display=swap");
+
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --guardsman-red: #c00000;
+  --light-red: #ff3334;
+  --cocktail-red: #d4526a;
+  --light-pink: #f4a8b5;
+  --pastel-pink: #fde8ed;
+  --tulip: #c94060;
+  --parchment: #fdf6ee;
+  --parchment-dark: #f5e6d3;
+  --ink: #3a1a22;
+  --ink-light: #6b3040;
+  --gold: #c9956b;
+  --gold-light: #e8c49a;
+
+  --radius: 0.625rem;
+  --background: var(--parchment);
+  --foreground: var(--ink);
+  --card: var(--parchment);
+  --card-foreground: var(--ink);
+  --popover: var(--parchment);
+  --popover-foreground: var(--ink);
+  --primary: var(--tulip);
+  --primary-foreground: #fff;
+  --secondary: var(--pastel-pink);
+  --secondary-foreground: var(--ink);
+  --muted: #f0dfe5;
+  --muted-foreground: var(--ink-light);
+  --accent: var(--light-pink);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: rgba(180, 100, 120, 0.25);
+  --input: rgba(180, 100, 120, 0.25);
+  --ring: var(--cocktail-red);
+  --sidebar: var(--parchment);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--tulip);
+  --sidebar-primary-foreground: #fff;
+  --sidebar-accent: var(--pastel-pink);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: rgba(180, 100, 120, 0.25);
+  --sidebar-ring: var(--cocktail-red);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-guardsman-red: var(--guardsman-red);
+  --color-light-red: var(--light-red);
+  --color-cocktail-red: var(--cocktail-red);
+  --color-light-pink: var(--light-pink);
+  --color-pastel-pink: var(--pastel-pink);
+  --color-tulip: var(--tulip);
+  --font-sans: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Great Vibes", cursive;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─── Valentine's Background ─────────────────────────────────────────────── */
+.valentines-bg {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: #1a0510;
+  background-image:
+    radial-gradient(
+      ellipse at 20% 20%,
+      rgba(180, 30, 70, 0.4) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 80% 80%,
+      rgba(140, 20, 50, 0.35) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(90, 10, 30, 0.5) 0%,
+      transparent 70%
+    );
+}
+
+/* Subtle noise texture overlay */
+.valentines-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ─── Floating Hearts ─────────────────────────────────────────────────────── */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -60px;
+  font-size: 1.2rem;
+  animation: floatUp linear infinite;
+  opacity: 0;
+}
+
+.fh-0 {
+  left: 5%;
+  font-size: 0.9rem;
+  animation-duration: 12s;
+  animation-delay: 0s;
+  color: rgba(220, 100, 130, 0.6);
+}
+.fh-1 {
+  left: 15%;
+  font-size: 0.6rem;
+  animation-duration: 15s;
+  animation-delay: 2s;
+  color: rgba(200, 80, 110, 0.4);
+}
+.fh-2 {
+  left: 30%;
+  font-size: 1.1rem;
+  animation-duration: 11s;
+  animation-delay: 4s;
+  color: rgba(240, 120, 150, 0.55);
+}
+.fh-3 {
+  left: 48%;
+  font-size: 0.75rem;
+  animation-duration: 14s;
+  animation-delay: 1s;
+  color: rgba(210, 90, 120, 0.5);
+}
+.fh-4 {
+  left: 62%;
+  font-size: 1.3rem;
+  animation-duration: 13s;
+  animation-delay: 6s;
+  color: rgba(230, 110, 140, 0.45);
+}
+.fh-5 {
+  left: 73%;
+  font-size: 0.8rem;
+  animation-duration: 16s;
+  animation-delay: 3s;
+  color: rgba(200, 75, 105, 0.5);
+}
+.fh-6 {
+  left: 85%;
+  font-size: 1rem;
+  animation-duration: 10s;
+  animation-delay: 7s;
+  color: rgba(245, 130, 155, 0.6);
+}
+.fh-7 {
+  left: 93%;
+  font-size: 0.65rem;
+  animation-duration: 18s;
+  animation-delay: 5s;
+  color: rgba(215, 95, 125, 0.4);
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(-10deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-105vh) rotate(15deg);
+    opacity: 0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Book Cover Page ─────────────────────────────────────────────────────── */
+.cover-page {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg, #8b1a30 0%, #5c0f20 40%, #3d0a15 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-page::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1.5px solid rgba(220, 180, 140, 0.45);
+  border-radius: 2px;
+}
+
+.cover-page::after {
+  content: "♥";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  color: rgba(220, 160, 130, 0.2);
+  text-shadow: 0 0 40px rgba(220, 80, 100, 0.4);
+}
+
+/* ─── Book Pages ──────────────────────────────────────────────────────────── */
+.book-page {
+  width: 100%;
+  height: 100%;
+  background-color: var(--parchment);
+  background-image:
+    /* Subtle aged paper texture */
+    radial-gradient(
+      ellipse at 30% 20%,
+      rgba(200, 170, 140, 0.12) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at 70% 80%,
+      rgba(190, 160, 130, 0.1) 0%,
+      transparent 60%
+    ),
+    /* Faint horizontal lines like ruled paper */
+    repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 31px,
+        rgba(180, 130, 140, 0.12) 31px,
+        rgba(180, 130, 140, 0.12) 32px
+      );
+  position: relative;
+  overflow: hidden;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+/* Left-page decorative margin line */
+.book-page--left::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 18px;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(210, 120, 140, 0.25) 20%,
+    rgba(210, 120, 140, 0.25) 80%,
+    transparent
+  );
+}
+
+/* Right-page decorative margin line */
+.book-page--right::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 18px;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(210, 120, 140, 0.25) 20%,
+    rgba(210, 120, 140, 0.25) 80%,
+    transparent
+  );
+}
+
+/* Corner flourish on each page */
+.book-page::after {
+  content: "✿";
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  font-size: 0.9rem;
+  color: rgba(180, 100, 120, 0.25);
+  transform: rotate(15deg);
+}
+
+/* ─── Page Content ────────────────────────────────────────────────────────── */
+.page-content {
+  padding: 36px 28px 28px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Typography ──────────────────────────────────────────────────────────── */
+.cover-title {
+  font-family: "Great Vibes", cursive;
+  font-size: 2.4rem;
+  line-height: 1.3;
+  color: #5c0f20;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(200, 80, 100, 0.2);
+}
+
+.salutation {
+  font-family: "Great Vibes", cursive;
+  font-size: 2.1rem;
+  color: #8b1a30;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.body-text {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: #3a1a22;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  font-style: italic;
+}
+
+.heart-ornament {
+  font-size: 2rem;
+  color: #8b1a30;
+  text-align: center;
+  letter-spacing: 0.4em;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.heart-ornament--small {
+  font-size: 1rem;
+  letter-spacing: 0.6em;
+  opacity: 0.7;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+.closing-heart {
+  font-size: 1.8rem;
+  color: #8b1a30;
+  text-align: right;
+  margin-top: 16px;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* ─── Page Number ─────────────────────────────────────────────────────────── */
+.page-number {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.75rem;
+  color: rgba(140, 60, 80, 0.55);
+  letter-spacing: 0.12em;
+  font-style: italic;
+}
+
+/* ─── Navigation Buttons ──────────────────────────────────────────────────── */
+.nav-btn {
+  background: linear-gradient(135deg, #8b1a30, #c94060) !important;
+  color: #fde8ed !important;
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 1rem !important;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  padding: 10px 28px !important;
+  border: 1px solid rgba(240, 180, 190, 0.3) !important;
+  border-radius: 2px !important;
+  box-shadow:
+    0 4px 16px rgba(90, 10, 30, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.25s ease !important;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-btn:hover {
+  background: linear-gradient(135deg, #a82040, #d95070) !important;
+  box-shadow:
+    0 6px 24px rgba(90, 10, 30, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-1px);
+}
+
+/* ─── Base Layer ──────────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Cormorant Garamond", Georgia, serif;
+  }
+}
+
+/* ─── Utilities ───────────────────────────────────────────────────────────── */
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
 }
