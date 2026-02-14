@@ -46,10 +46,10 @@ function MyBook() {
           <div className="page-content">
             <p className="body-text">
               As usual, I just want to say thank you for being there for me. I
-              really appreciate everything. From the gifts, the kinds words, and
-              just your company in general. You already know this but your
-              presence is already more than enough for me. Iba talaga pag kasama
-              kita.
+              really appreciate everything. From the gifts, the kinds words, the
+              love, the care, everything. Even just your company in general. You
+              already know this but your presence is already more than enough
+              for me. Iba talaga pag kasama kita.
             </p>
           </div>
           <div className="page-number">3</div>
@@ -62,8 +62,9 @@ function MyBook() {
               It&apos;s like the world can strike me down with all its might but
               I know I&apos;ll be fine because you&apos;re with me. I have the
               most wonderful girlfiend (and soon to be wifey WAW engaged na
-              yarn) right there to support me. And I plan to do the same for
-              you.
+              yarn) right there to support me. And I couldn&apos;t be any more
+              thankful. So I want to do my best to give you the love and support
+              you deserve.
             </p>
           </div>
           <div className="page-number">4</div>
@@ -102,11 +103,11 @@ function MyBook() {
           <div className="page-content">
             <p className="body-text">
               always be there cheering for you as you soar to greater heights.
-              This balance also makes confident that I REALLY have found my
-              soulmate, my other half, my endgame. So as we spend another
-              valentine&apos;s together, know that this is just one of the many
-              valentine&apos;s we&apos;ll spend together until death do us part,
-              because I don&apos;t
+              There's a possibility that over time we might change. It's like
+              how we're not the same people compared to who we were during
+              junior high. I just want you to know that even if that does
+              happen, I will still love you and embrace any version of you. You
+              deserve the best, because even
             </p>
           </div>
           <div className="page-number">7</div>
@@ -116,16 +117,42 @@ function MyBook() {
         <div className="book-page book-page--left">
           <div className="page-content">
             <p className="body-text">
-              see it any other way. It&apos;s you I want to support in all your
-              upcoming achievements and milestones. It&apos;s you who I want
-              walking down in the aisle in the most beautiful dress. It&apos;s
-              you, it&apos;s always been you, who I want to be my forever
-              valentine. I love you, Noela Basilio. Nothing will ever change
-              that.
+              if you can&apos;t see it, I know how generous, kind, loving, and
+              caring you are. I&apos;m so blessed to have you by my side.
+              I&apos;m even tearing up right now as I write this, thinking about
+              how lucky I am to have you as my partner. Which is why I will
+              always be there for you. Through the ups and downs. No matter
+              what, I will
+            </p>
+          </div>
+          <div className="page-number">8</div>
+        </div>
+
+        <div className="book-page book-page--right">
+          <div className="page-content">
+            <p className="body-text">
+              never leave your side. If there&apos;s anything I realized,
+              it&apos;s that I REALLY have found my soulmate, my other half, my
+              endgame. So as we spend another valentine&apos;s together, know
+              that this is just one of the many valentine&apos;s we&apos;ll
+              spend together until death do us part, because I don&apos;t see it
+              any other way.
+            </p>
+          </div>
+          <div className="page-number">9</div>
+        </div>
+        <div className="book-page book-page--left">
+          <div className="page-content">
+            <p className="body-text">
+              It&apos;s you I want to cheer for and support in all your upcoming
+              achievements and milestones. It&apos;s you who I want walking down
+              in the aisle in the most beautiful dress. It&apos;s you, it&apos;s
+              always been you, who I want to be my forever valentine. I love
+              you, Noela Basilio. Nothing will ever change that.
             </p>
             <div className="closing-heart">♥</div>
           </div>
-          <div className="page-number">8</div>
+          <div className="page-number">10</div>
         </div>
       </HTMLFlipBook>
 
